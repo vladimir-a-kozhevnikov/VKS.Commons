@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Prefix_M24">yotta</data>
+	<data name="Abbr_M24">Y</data>
+	<data name="Prefix_M21">zetta</data>
+	<data name="Abbr_M21">Z</data>
+	<data name="Prefix_M18">exa</data>
+	<data name="Abbr_M18">E</data>
+	<data name="Prefix_M15">peta</data>
+	<data name="Abbr_M15">P</data>
+	<data name="Prefix_M12">tera</data>
+	<data name="Abbr_M12">T</data>
+	<data name="Prefix_M09">giga</data>
+	<data name="Abbr_M09">G</data>
+	<data name="Prefix_M06">mega</data>
+	<data name="Abbr_M06">M</data>
+	<data name="Prefix_M03">kilo</data>
+	<data name="Abbr_M03">k</data>
+	<data name="Prefix_M02">hecto</data>
+	<data name="Abbr_M02">h</data>
+	<data name="Prefix_M01">deca</data>
+	<data name="Abbr_M01">da</data>
+	<data name="Prefix_F01">deci</data>
+	<data name="Abbr_F01">d</data>
+	<data name="Prefix_F02">centi</data>
+	<data name="Abbr_F02">c</data>
+	<data name="Prefix_F03">milli</data>
+	<data name="Abbr_F03">m</data>
+	<data name="Prefix_F06">micro</data>
+	<data name="Abbr_F06">µ</data>
+	<data name="Prefix_F09">nano</data>
+	<data name="Abbr_F09">n</data>
+	<data name="Prefix_F12">pico</data>
+	<data name="Abbr_F12">p</data>
+	<data name="Prefix_F15">femto</data>
+	<data name="Abbr_F15">f</data>
+	<data name="Prefix_F18">atto</data>
+	<data name="Abbr_F18">a</data>
+	<data name="Prefix_F21">zepto</data>
+	<data name="Abbr_F21">z</data>
+	<data name="Prefix_F24">yocto</data>
+	<data name="Abbr_F24">y</data>
+</root>
