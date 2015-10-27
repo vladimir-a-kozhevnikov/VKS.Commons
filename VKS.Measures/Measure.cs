@@ -87,7 +87,7 @@ namespace VKS.Measures
 		/// <param name="targetSystem">Target measurement system.</param>
 		/// <param name="targetScale">Target scale level. If this parameter set to null, then system tries to scale
 		/// passed value automatically to the best fitted scale level.</param>
-		protected abstract ScalingData<TPrimitive> ScaleMeasure (MeasurementSystem targetSystem, int? targetScale = null);
+		internal abstract ScalingData<TPrimitive> ScaleMeasure (MeasurementSystem targetSystem, int? targetScale = null);
 
 	}
 }

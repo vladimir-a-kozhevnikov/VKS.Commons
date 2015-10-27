@@ -117,25 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NegativeValuesNotAllowed" xml:space="preserve">
-    <value>Negative values for measure of {0} not allowed.</value>
+  <data name="Abbr_F01" xml:space="preserve">
+    <value>д</value>
   </data>
-  <data name="PositiveValuesNotAllowed" xml:space="preserve">
-    <value>Positive values for measure of {0} not allowed.</value>
+  <data name="Abbr_F02" xml:space="preserve">
+    <value>с</value>
   </data>
-  <data name="NonNegativeValuesNotAllowed" xml:space="preserve">
-    <value>Positive values and zero for measure of {0} not allowed.</value>
+  <data name="Abbr_F03" xml:space="preserve">
+    <value>м</value>
   </data>
-  <data name="NonPositiveValuesNotAllowed" xml:space="preserve">
-    <value>Negative values and zero for measure of {0} not allowed.</value>
+  <data name="Abbr_F06" xml:space="preserve">
+    <value>мк</value>
   </data>
-  <data name="NotSupported_InfiniteScales" xml:space="preserve">
-    <value>Scales as infinity (both positive and negative) currently not supported by library.</value>
+  <data name="Abbr_F09" xml:space="preserve">
+    <value>н</value>
   </data>
-  <data name="NotSupported_NANAsScale" xml:space="preserve">
-    <value>'Not a Number' scales not supported by library.</value>
+  <data name="Abbr_F12" xml:space="preserve">
+    <value>п</value>
   </data>
-  <data name="NotSupported_NANAsValue" xml:space="preserve">
-    <value>'Not a Number' values currently not supported by library.</value>
+  <data name="Abbr_F15" xml:space="preserve">
+    <value>ф</value>
+  </data>
+  <data name="Abbr_F18" xml:space="preserve">
+    <value>а</value>
+  </data>
+  <data name="Abbr_F21" xml:space="preserve">
+    <value>з</value>
+  </data>
+  <data name="Abbr_F24" xml:space="preserve">
+    <value>й</value>
+  </data>
+  <data name="Abbr_M01" xml:space="preserve">
+    <value>да</value>
+  </data>
+  <data name="Abbr_M02" xml:space="preserve">
+    <value>г</value>
+  </data>
+  <data name="Abbr_M03" xml:space="preserve">
+    <value>к</value>
+  </data>
+  <data name="Abbr_M06" xml:space="preserve">
+    <value>М</value>
+  </data>
+  <data name="Abbr_M09" xml:space="preserve">
+    <value>Г</value>
+  </data>
+  <data name="Abbr_M12" xml:space="preserve">
+    <value>Т</value>
+  </data>
+  <data name="Abbr_M15" xml:space="preserve">
+    <value>П</value>
+  </data>
+  <data name="Abbr_M18" xml:space="preserve">
+    <value>Э</value>
+  </data>
+  <data name="Abbr_M21" xml:space="preserve">
+    <value>З</value>
+  </data>
+  <data name="Abbr_M24" xml:space="preserve">
+    <value>Й</value>
+  </data>
+  <data name="Prefix_F01" xml:space="preserve">
+    <value>деци</value>
+  </data>
+  <data name="Prefix_F02" xml:space="preserve">
+    <value>санти</value>
+  </data>
+  <data name="Prefix_F03" xml:space="preserve">
+    <value>милли</value>
+  </data>
+  <data name="Prefix_F06" xml:space="preserve">
+    <value>микро</value>
+  </data>
+  <data name="Prefix_F09" xml:space="preserve">
+    <value>нано</value>
+  </data>
+  <data name="Prefix_F12" xml:space="preserve">
+    <value>пико</value>
+  </data>
+  <data name="Prefix_F15" xml:space="preserve">
+    <value>фемто</value>
+  </data>
+  <data name="Prefix_F18" xml:space="preserve">
+    <value>атто</value>
+  </data>
+  <data name="Prefix_F21" xml:space="preserve">
+    <value>зепто</value>
+  </data>
+  <data name="Prefix_F24" xml:space="preserve">
+    <value>йокто</value>
+  </data>
+  <data name="Prefix_M01" xml:space="preserve">
+    <value>дека</value>
+  </data>
+  <data name="Prefix_M02" xml:space="preserve">
+    <value>гекто</value>
+  </data>
+  <data name="Prefix_M03" xml:space="preserve">
+    <value>кило</value>
+  </data>
+  <data name="Prefix_M06" xml:space="preserve">
+    <value>мега</value>
+  </data>
+  <data name="Prefix_M09" xml:space="preserve">
+    <value>гига</value>
+  </data>
+  <data name="Prefix_M12" xml:space="preserve">
+    <value>тера</value>
+  </data>
+  <data name="Prefix_M15" xml:space="preserve">
+    <value>пета</value>
+  </data>
+  <data name="Prefix_M18" xml:space="preserve">
+    <value>экса</value>
+  </data>
+  <data name="Prefix_M21" xml:space="preserve">
+    <value>зетта</value>
+  </data>
+  <data name="Prefix_M24" xml:space="preserve">
+    <value>йотта</value>
   </data>
 </root>

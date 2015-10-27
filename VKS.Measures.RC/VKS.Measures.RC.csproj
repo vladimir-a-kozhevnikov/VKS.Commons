@@ -43,6 +43,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ISOUScales.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ISOUScales.ru-RU.resx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions.Designer.cs">

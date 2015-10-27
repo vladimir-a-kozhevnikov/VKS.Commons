@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Resources for VKS.Measures assembly.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VKS.Measures.RC")]
+[assembly: AssemblyProduct("VKS.Measures")]
 [assembly: AssemblyCopyright("Copyright © Vladimir A. Kozhevnikov, 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
