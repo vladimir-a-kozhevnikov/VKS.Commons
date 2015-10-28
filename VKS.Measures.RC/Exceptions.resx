@@ -138,4 +138,6 @@
   <data name="NotSupported_NANAsValue" xml:space="preserve">
     <value>'Not a Number' values currently not supported by library.</value>
   </data>
+  <data name="NotSupported_FormatSequence">Specified format sequence {0} cannot be recognized.</data>
+  <data name="NotSupported_MeasurementSystem">Specified measurement system not supported or couldn't be recognized.</data>
 </root>

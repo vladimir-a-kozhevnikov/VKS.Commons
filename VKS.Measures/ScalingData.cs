@@ -20,12 +20,12 @@ namespace VKS.Measures
 		/// <summary>
 		/// The name of the quantity considering scale level.
 		/// </summary>
-		public string QuantityName;
+		public string ScalePrefix;
 
 		/// <summary>
 		/// The quantity abbreviation considering scale level.
 		/// </summary>
-		public string QuantityAbbreviation;
+		public string ScaleAbbreviation;
 	}
 }
 
