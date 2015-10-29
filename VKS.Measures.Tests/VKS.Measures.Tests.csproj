@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VKS.Measures.RC\VKS.Measures.RC.csproj">
-      <Project>{c8dec517-99d8-47a0-ad47-75da7a67886a}</Project>
+      <Project>{C8DEC517-99D8-47A0-AD47-75DA7A67886A}</Project>
       <Name>VKS.Measures.RC</Name>
     </ProjectReference>
     <ProjectReference Include="..\VKS.Measures\VKS.Measures.csproj">
-      <Project>{f8252391-27ee-49d1-9a85-b350061cff08}</Project>
+      <Project>{F8252391-27EE-49D1-9A85-B350061CFF08}</Project>
       <Name>VKS.Measures</Name>
     </ProjectReference>
   </ItemGroup>

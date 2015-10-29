@@ -44,6 +44,14 @@
       <LastGenOutput>ISOUScales.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ISOUScales.ru-RU.resx" />
+    <EmbeddedResource Include="ISOUQuantifiers.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ISOUQuantifiers.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeasuresName.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MeasuresName.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions.Designer.cs">
@@ -54,6 +62,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISOUScales.Designer.cs">
       <DependentUpon>ISOUScales.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ISOUQuantifiers.Designer.cs">
+      <DependentUpon>ISOUQuantifiers.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MeasuresName.Designer.cs">
+      <DependentUpon>MeasuresName.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

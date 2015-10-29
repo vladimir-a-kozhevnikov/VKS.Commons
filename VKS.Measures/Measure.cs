@@ -47,6 +47,13 @@ namespace VKS.Measures
 		/// </returns>
 		public abstract string ToString (string format, IFormatProvider formatProvider);
 
+		/// <summary>
+		/// Gets the <see cref="VKS.Measures.Measure &lt; TPrimitive &gt;"/> value converted to the specified <paramref name="targetMeasurementSystem"/>.
+		/// </summary>
+		/// <param name="targetMeasurementSystem">Target measurement system.</param>
+		public abstract double this [MeasurementSystem targetMeasurementSystem] {
+			get;
+		}
 
 		/// <summary>
 		/// Compares this instance to another object.

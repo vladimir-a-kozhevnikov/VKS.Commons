@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VKS.Measures
+﻿namespace VKS.Measures
 {
 	/// <summary>
 	/// Information about scaling data for measure
