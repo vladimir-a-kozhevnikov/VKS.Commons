@@ -19,35 +19,6 @@ namespace VKS.Measures
 
 
 		/// <summary>
-		/// Gets the quantifier name for the specified targetMeasurementSystem.
-		/// </summary>
-		/// <param name="targetMeasurementSystem">Target measurement system.</param>
-		/// <param name="isAbbreviation">If set to <c>true</c> then abbreviated quantifier name returned.</param>
-		public abstract string this [MeasurementSystem targetMeasurementSystem, bool isAbbreviation] {
-			get;
-		}
-
-		/// <summary>
-		/// Gets or sets the <see cref="VKS.Measures.PhysicalMeasure"/> value considering <paramref name="measurementSystem"/> and
-		/// <paramref name="scale"/> level.
-		/// </summary>
-		/// <param name="measurementSystem">Measurement system used for convertions.</param>
-		/// <param name="scale">Scale level used for convertions.</param>
-		public abstract double this [MeasurementSystem measurementSystem, int scale] {
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Serves as a hash function for a <see cref="VKS.Measures.PhysicalMeasure"/> object.
-		/// </summary>
-		/// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table.</returns>
-		public override int GetHashCode ()
-		{
-			return InnerValue.GetHashCode ();
-		}
-
-		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="VKS.Measures.PhysicalMeasure"/>.
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="VKS.Measures.PhysicalMeasure"/>.</returns>
@@ -144,7 +115,7 @@ namespace VKS.Measures
 		/// 	</item>
 		/// </list>
 		///		
-		///	<b>Numeric format (ignored for "q" / "Q" format options):</b>
+		///	<b>Numeric format (ignored for "s" / "S" and "q" / "Q" format options):</b>
 		///		Any supported format for double.ToString() method. By default general numerics format preferred (with one 
 		///			exception - for scientific format - exponential format is default).
 		///			
@@ -158,31 +129,18 @@ namespace VKS.Measures
 				                    new TimeSpan (0, 0, 10));
 
 			var _formatType = _formatTokens [0]?.Groups ["token"]?.Value ?? "g";
-			var _systemToken = Convert.ToInt32 (_formatTokens [0]?.Groups ["system"]?.Value ?? "0");
+			var _sysToken = _formatTokens [0]?.Groups ["system"]?.Value;
+			var _systemToken = _sysToken == "" ? 0 : Convert.ToInt32 (_sysToken);
 			var _targetSystem = Enum.IsDefined (typeof(MeasurementSystem), _systemToken) ? (MeasurementSystem)_systemToken : 0;
 			int? _targetScale;
 			if (string.IsNullOrEmpty (_formatTokens [0]?.Groups ["scale"]?.Value))
 				_targetScale = null;
 			else
 				_targetScale = Convert.ToInt32 (_formatTokens [0]?.Groups ["scale"]?.Value);
-			var _quantifierType = _formatTokens [0]?.Groups ["quantity"]?.Value ?? "n";
+			var _quantifierType = _formatTokens [0]?.Groups ["quantity"]?.Value;
 			var _numberFormat = _formatTokens [0]?.Groups ["number"]?.Value ?? "g";
-			string _quantifier;
-			switch (_quantifierType.ToLowerInvariant ()) {
-			case "f":
-				_quantifier = this [MeasurementSystem.InternationalSystemOfUnits, false];
-				break;
-			case "a":
-				_quantifier = this [MeasurementSystem.InternationalSystemOfUnits, true];
-				break;
-			case "n":
-				_quantifier = "";
-				break;
-			default:
-				throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
-			}
+			_numberFormat = string.IsNullOrWhiteSpace (_numberFormat) ? "g" : _numberFormat;
 
-			string _prefix; //Define local variable for quantity name prefix.
 			var _genericNFI = new System.Globalization.NumberFormatInfo {
 				NumberGroupSeparator = " ",
 				NumberDecimalDigits = 3,
@@ -197,101 +155,88 @@ namespace VKS.Measures
 			switch (_targetSystem) {
 			case MeasurementSystem.InternationalSystemOfUnits:
 				var _metricValue = ConvertToPrimitive (MeasurementSystem.InternationalSystemOfUnits);
+				var _scaledValue = ScaleMeasure (MeasurementSystem.InternationalSystemOfUnits, _targetScale);
 				switch (_formatType) {
 				case "q":
 					//Abbreviated quantifier name considering scaling level.
 					if (_targetScale == null)
 						throw new FormatException ();
-					return string.Format ("{0}{1}", InternationalSystemOfUnits.GetScalePrefix (_targetScale.Value),
-						this [MeasurementSystem.InternationalSystemOfUnits, true]);
+					return _scaledValue.Abbreviation;
 				case "Q":
 					//Full quantifier name considering scaling level.
 					if (_targetScale == null)
 						throw new FormatException ();
-					return string.Format ("{0}{1}", InternationalSystemOfUnits.GetScalePrefix (_targetScale.Value),
-						this [MeasurementSystem.InternationalSystemOfUnits, false]);
+					return _scaledValue.Quantifier;
 				case "g":
 					//General formatting without smart scaling.
-					_targetScale = _targetScale ?? InternationalSystemOfUnits.GetScalePower (_metricValue);
 					switch (_quantifierType.ToLowerInvariant ()) {
 					case "f":
-						_prefix = InternationalSystemOfUnits.GetScalePrefix (_targetScale ?? 0);
-						break;
-					case "a":
-						_prefix = InternationalSystemOfUnits.GetScaleAbbreviation (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0:#,##0.000} {1}", _scaledValue.ScaledValue, 
+							_scaledValue.Quantifier);
 					case "n":
-						_prefix = "";
-						break;
+						return string.Format (_genericNFI, "{0:#,##0.000}", _scaledValue.ScaledValue);
 					default:
-						throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
+						return string.Format (_genericNFI, "{0:#,##0.000} {1}", _scaledValue.ScaledValue, 
+							_scaledValue.Abbreviation);
 					}
-					return string.Format (_genericNFI, "{0:#,##0.000} {1}{2}", _metricValue / Math.Pow (10, _targetScale ?? 0),
-						_prefix, _quantifier);
 				case "G":
 					//General formatting with smart scaling.
 					_targetScale = _targetScale ?? InternationalSystemOfUnits.GetScalePower (_metricValue, true);
+					_scaledValue = ScaleMeasure (MeasurementSystem.InternationalSystemOfUnits, _targetScale);
 					switch (_quantifierType.ToLowerInvariant ()) {
 					case "f":
-						_prefix = InternationalSystemOfUnits.GetScalePrefix (_targetScale ?? 0);
-						break;
-					case "a":
-						_prefix = InternationalSystemOfUnits.GetScaleAbbreviation (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0:#,##0.000} {1}", _scaledValue.ScaledValue, 
+							_scaledValue.Quantifier);
 					case "n":
-						_prefix = "";
-						break;
+						return string.Format (_genericNFI, "{0:#,##0.000}", _scaledValue.ScaledValue);
 					default:
-						throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
+						return string.Format (_genericNFI, "{0:#,##0.000} {1}", _scaledValue.ScaledValue, 
+							_scaledValue.Abbreviation);
 					}
-					return string.Format (_genericNFI, "{0:#,##0.000} {1}{2}", _metricValue / Math.Pow (10, _targetScale ?? 0),
-						_prefix, _quantifier);
 				case "f":
-					//TODO: Full formatting rules without smart-scaling.
-					_targetScale = _targetScale ?? InternationalSystemOfUnits.GetScalePower (_metricValue, false);
+					//Full formatting rules without smart-scaling.
+					_quantifierType = string.IsNullOrWhiteSpace (_quantifierType) ? "n" : _quantifierType;
 					switch (_quantifierType.ToLowerInvariant ()) {
 					case "f":
-						_prefix = InternationalSystemOfUnits.GetScalePrefix (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0} {1}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider), 
+							_scaledValue.Quantifier);
 					case "a":
-						_prefix = InternationalSystemOfUnits.GetScaleAbbreviation (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0} {1}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider), 
+							_scaledValue.Abbreviation);
 					case "n":
-						_prefix = "";
-						break;
+						return string.Format (_genericNFI, "{0}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider));
 					default:
 						throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
 					}
-					return string.Format ("{0}{1}{2}", (_metricValue / Math.Pow (10, _targetScale ?? 0)).ToString (_numberFormat, formatProvider),
-						_prefix, _quantifier);
 				case "F":
 					//Full formatting rules with smart-scaling.
+					_quantifierType = string.IsNullOrWhiteSpace (_quantifierType) ? "n" : _quantifierType;
 					_targetScale = _targetScale ?? InternationalSystemOfUnits.GetScalePower (_metricValue, true);
+					_scaledValue = ScaleMeasure (MeasurementSystem.InternationalSystemOfUnits, _targetScale);
 					switch (_quantifierType.ToLowerInvariant ()) {
 					case "f":
-						_prefix = InternationalSystemOfUnits.GetScalePrefix (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0} {1}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider), 
+							_scaledValue.Quantifier);
 					case "a":
-						_prefix = InternationalSystemOfUnits.GetScaleAbbreviation (_targetScale ?? 0);
-						break;
+						return string.Format (_genericNFI, "{0} {1}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider), 
+							_scaledValue.Abbreviation);
 					case "n":
-						_prefix = "";
-						break;
+						return string.Format (_genericNFI, "{0}", _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider));
 					default:
 						throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
 					}
-					return string.Format ("{0}{1}{2}", (_metricValue / Math.Pow (10, _targetScale ?? 0)).ToString (_numberFormat, formatProvider),
-						_prefix, _quantifier);
 				case "N":
 				case "n":
 					//Numeric only (without quantifier and scaling):
-					return _metricValue.ToString (_numberFormat, formatProvider);
+					_scaledValue = ScaleMeasure (MeasurementSystem.InternationalSystemOfUnits, 0);
+					return _scaledValue.ScaledValue.ToString (_numberFormat, formatProvider);
 				case "S":
 				case "s":
 					//Scientific format (exponential):
-					_numberFormat = _formatTokens [0]?.Groups ["number"]?.Value ?? "e10";
+					_scaledValue = ScaleMeasure (MeasurementSystem.InternationalSystemOfUnits, 0);
 					return string.Format ("{0} {1}", 
-						_metricValue.ToString (_numberFormat, formatProvider), _quantifier).TrimEnd ();
+						_scaledValue.ScaledValue.ToString ("e5", formatProvider),
+						_scaledValue.Abbreviation);
 				default:
 					throw new FormatException (string.Format (Exceptions.NotSupported_FormatSequence, format));
 				}

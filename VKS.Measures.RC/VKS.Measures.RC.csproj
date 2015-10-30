@@ -52,6 +52,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MeasuresName.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ISOUQuantifiers.ru-RU.resx">
+      <LastGenOutput>ISOUQuantifier.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions.Designer.cs">

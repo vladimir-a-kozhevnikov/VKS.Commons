@@ -18,12 +18,12 @@
 		/// <summary>
 		/// The name of the quantity considering scale level.
 		/// </summary>
-		public string ScalePrefix;
+		public string Quantifier;
 
 		/// <summary>
 		/// The quantity abbreviation considering scale level.
 		/// </summary>
-		public string ScaleAbbreviation;
+		public string Abbreviation;
 	}
 }
 

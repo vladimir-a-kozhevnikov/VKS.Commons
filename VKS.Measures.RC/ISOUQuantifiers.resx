@@ -16,6 +16,8 @@
 	<data name="A_Mass">g</data>
 	<data name="F_Length">meter</data>
 	<data name="A_Length">m</data>
+	<data name="F_Mass_Ton">ton</data>
+	<data name="A_Mass_Ton">t</data>
 	<data name="F_Time">second</data>
 	<data name="A_Time">s</data>
 	<data name="F_Area">square meter</data>

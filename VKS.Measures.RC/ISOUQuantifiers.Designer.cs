@@ -77,6 +77,18 @@ namespace VKS.Measures.RC {
             }
         }
         
+        public static string F_Mass_Ton {
+            get {
+                return ResourceManager.GetString("F_Mass_Ton", resourceCulture);
+            }
+        }
+        
+        public static string A_Mass_Ton {
+            get {
+                return ResourceManager.GetString("A_Mass_Ton", resourceCulture);
+            }
+        }
+        
         public static string F_Mass {
             get {
                 return ResourceManager.GetString("F_Mass", resourceCulture);
@@ -95,9 +107,9 @@ namespace VKS.Measures.RC {
             }
         }
         
-        public static string F_Force {
+        public static string A_Mass {
             get {
-                return ResourceManager.GetString("F_Force", resourceCulture);
+                return ResourceManager.GetString("A_Mass", resourceCulture);
             }
         }
         
@@ -107,9 +119,9 @@ namespace VKS.Measures.RC {
             }
         }
         
-        public static string A_Mass {
+        public static string F_Force {
             get {
-                return ResourceManager.GetString("A_Mass", resourceCulture);
+                return ResourceManager.GetString("F_Force", resourceCulture);
             }
         }
         

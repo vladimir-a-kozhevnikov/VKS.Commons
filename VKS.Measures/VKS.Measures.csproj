@@ -44,6 +44,8 @@
     <Compile Include="MeasurementSystem.cs" />
     <Compile Include="InternationalSystemOfUnits.cs" />
     <Compile Include="Mass.cs" />
+    <Compile Include="MeasureSystemException.cs" />
+    <Compile Include="MeasureException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

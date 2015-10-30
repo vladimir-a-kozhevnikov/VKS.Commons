@@ -25,7 +25,7 @@ namespace VKS.Measures
 		protected virtual TPrimitive InnerValue {
 			get { return FInnerValue; }
 			set {
-				if (FInnerValue.CompareTo (value) != 0) {
+				if (!FInnerValue.Equals (value)) {
 					OnPropertyChanged ();
 					FInnerValue = value;
 				}
@@ -51,8 +51,29 @@ namespace VKS.Measures
 		/// Gets the <see cref="VKS.Measures.Measure &lt; TPrimitive &gt;"/> value converted to the specified <paramref name="targetMeasurementSystem"/>.
 		/// </summary>
 		/// <param name="targetMeasurementSystem">Target measurement system.</param>
-		public abstract double this [MeasurementSystem targetMeasurementSystem] {
+		public abstract TPrimitive this [MeasurementSystem targetMeasurementSystem] {
 			get;
+
+		}
+
+		/// <summary>
+		/// Gets the quantifier name for the specified targetMeasurementSystem.
+		/// </summary>
+		/// <param name="targetMeasurementSystem">Target measurement system.</param>
+		/// <param name="isAbbreviation">If set to <c>true</c> then abbreviated quantifier name returned.</param>
+		public abstract string this [MeasurementSystem targetMeasurementSystem, bool isAbbreviation] {
+			get;
+		}
+
+		/// <summary>
+		/// Gets or sets the <see cref="VKS.Measures.PhysicalMeasure"/> value considering <paramref name="measurementSystem"/> and
+		/// <paramref name="scale"/> level.
+		/// </summary>
+		/// <param name="measurementSystem">Measurement system used for convertions.</param>
+		/// <param name="scale">Scale level used for convertions.</param>
+		public abstract TPrimitive this [MeasurementSystem measurementSystem, int scale] {
+			get;
+			set;
 		}
 
 		/// <summary>

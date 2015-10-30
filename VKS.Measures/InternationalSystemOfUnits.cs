@@ -40,8 +40,13 @@ namespace VKS.Measures
 			var _Power = Math.Floor (Math.Log10 (Math.Abs (basicValue)));
 			if (useSmartScaling) {
 				return Convert.ToInt32 (Math.Floor ((_Power - 1) / 3)) * 3;
+			} else {
+				var _scale = Convert.ToInt32 (Math.Floor (_Power));
+				if (Math.Abs (_scale) >= 3)
+					return Convert.ToInt32 (Math.Floor ((_Power) / 3)) * 3;
+				else
+					return _scale;
 			}
-			return Convert.ToInt32 (_Power);
 		}
 
 		/// <summary>

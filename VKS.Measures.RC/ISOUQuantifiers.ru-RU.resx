@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+		<data name="F_Mass">грамм</data>
+	<data name="A_Mass">г</data>
+	<data name="F_Length">метр</data>
+	<data name="A_Length">м</data>
+	<data name="F_Mass_Ton">тонна</data>
+	<data name="A_Mass_Ton">т</data>
+	<data name="F_Time">секунда</data>
+	<data name="A_Time">с</data>
+	<data name="F_Area">кв. метр</data>
+	<data name="A_Area">м²</data>
+	<data name="F_Volume">куб. метр</data>
+	<data name="A_Volume">м³</data>
+	<data name="F_Force">ньютон</data>
+	<data name="A_Force">Н</data>
+	<data name="F_Temperature">кельвин</data>
+	<data name="A_Temperature">°К</data>
+</root>
